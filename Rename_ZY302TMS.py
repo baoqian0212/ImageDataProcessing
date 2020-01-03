@@ -1,23 +1,25 @@
 # -*- encoding:utf-8 -*-
 import os as OS
 
-"""
-复制快视图后需修改文件名，将*.jpg 修改为*_quik.PNG
-
-版本 ：python 3.7
-"""
 
 
-
-inPath = r'D:\问题数据\快视图'
+inPath = r'D:\宏观监测\快视图'
 
 dirs = OS.listdir(inPath)
 
 for f in dirs:
 
+    # 原来快视图文件的路径
     oldfile = OS.path.join(inPath, f)
-    newname = OS.path.basename(f) + '_quick' + '.PNG'
+    
+    filename = OS.path.splitext(f)[0]
+    print (filename)
+
+    #构造新快视图文件名和路径
+    newname = OS.path.basename(filename) + '_quick' + '.PNG'
     newfile = OS.path.join(inPath, newname)
+
+    
     OS.rename(oldfile, newfile)
 
 print("succeed!!!")
